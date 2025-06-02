@@ -1,0 +1,35 @@
+CREATE DATABASE desafio_01;
+-- Crear la base de datos (si aún no existe)
+CREATE DATABASE IF NOT EXISTS desafio_01;
+USE desafio_01;
+
+-- Crear tabla materia
+CREATE TABLE IF NOT EXISTS materia (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL
+);
+
+-- Crear tabla alumno
+CREATE TABLE IF NOT EXISTS alumno (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    id_materia BIGINT,
+    FOREIGN KEY (id_materia) REFERENCES materia(id)
+);
+
+-- Insertar materias
+INSERT INTO materia (nombre) VALUES 
+    ('Álgebra'),
+    ('Física'),
+    ('Química'),
+    ('DWF'),
+    ('SPL');
+
+-- Insertar alumnos
+INSERT INTO alumno (nombre, apellido, id_materia) VALUES
+    ('Juan', 'Pérez', 1),
+    ('Ana', 'García', 2),
+    ('Luis', 'Martínez', 3),
+    ('María', 'López', 4),
+    ('Carlos', 'González', 5);
